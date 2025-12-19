@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  evolution-api:
+    image: atendai/evolution-api:v2.0.10
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVER_URL=https://evolution-api-production.up.railway.app
+      - AUTHENTICATION_API_KEY=8830acf9704e6a493bde3f2fa728bb0ba952fd4c940047ccabb1c2772361ca4f
+      - AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true
+      - DATABASE_ENABLED=true
+      - DATABASE_PROVIDER=postgresql
+      - DATABASE_CONNECTION_URI=${DATABASE_URL}
+      - DATABASE_SAVE_DATA_INSTANCE=true
+      - DATABASE_SAVE_DATA_NEW_MESSAGE=true
+      - DATABASE_SAVE_MESSAGE_UPDATE=true
+      - DATABASE_SAVE_DATA_CONTACTS=true
+      - DATABASE_SAVE_DATA_CHATS=true
+      - DATABASE_SAVE_DATA_LABELS=true
+      - DATABASE_SAVE_DATA_HISTORIC=true
+      - RABBITMQ_ENABLED=false
+      - WEBSOCKET_ENABLED=true
+      - WEBSOCKET_GLOBAL_EVENTS=false
+      - WA_BUSINESS_TOKEN_WEBHOOK=evolution
+      - CONFIG_SESSION_PHONE_CLIENT=Evolution API
+      - CONFIG_SESSION_PHONE_NAME=Chrome
+      - QRCODE_LIMIT=30
+      - QRCODE_COLOR=#000000
+      - DEL_INSTANCE=false
+      - CHATWOOT_ENABLED=false
+      - OPENAI_ENABLED=false
+      - DIFY_ENABLED=false
+      - TYPEBOT_ENABLED=false
+      - S3_ENABLED=false
+      - CACHE_REDIS_ENABLED=false
+      - CACHE_REDIS_URI=
+      - CACHE_REDIS_PREFIX_KEY=evolution
+      - CACHE_LOCAL_ENABLED=true
+      - LOG_LEVEL=WARN
+      - LOG_COLOR=true
+      - LOG_BAILEYS=error
